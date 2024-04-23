@@ -34,7 +34,7 @@ pub enum Token {
     Length(u8), // 0~255 <-> 3~258
     // let d = distance - 1; d <-> 0~2^15-1
     Distance0(u8), // 0~255
-    Distance1(u8), // 0~127 <-> 256 x (1~128)
+    Distance1(u8), // 0~127 <-> 256 x (0~127)
     Meta(MetaToken),
 }
 
