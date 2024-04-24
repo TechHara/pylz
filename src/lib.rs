@@ -3,6 +3,8 @@ pub mod encoder;
 pub mod hash;
 pub mod hash_chain;
 pub mod lz77;
+#[cfg(test)]
+mod test;
 pub mod token;
 
 use std::io::Cursor;
@@ -17,7 +19,7 @@ fn encode(xs: &[u8]) -> Vec<u16> {
     let cursor = Cursor::new(xs);
     let encoder = Encoder::new(cursor, false);
     let adaptor = EncoderAdaptor::new(encoder);
-    adaptor.map(|token| u16::from(token)).collect()
+    adaptor.map(u16::from).collect()
 }
 
 fn decode(xs: &[u16]) -> Vec<u8> {
